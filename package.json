@@ -1,0 +1,17 @@
+{
+  "name": "capstone",
+  "version": "0.1.0",
+  "private": true,
+  "description": "My Vibe Coding 101 capstone. Replace this with one sentence about your app.",
+  "type": "module",
+  "engines": {
+    "node": ">=20.12"
+  },
+  "scripts": {
+    "dev": "node dev-server.mjs",
+    "test": "node --test",
+    "models": "node scripts/list-models.mjs",
+    "check:secrets": "npx --yes @secretlint/quick-start \"**/*\""
+  },
+  "license": "MIT"
+}

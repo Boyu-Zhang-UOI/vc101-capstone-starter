@@ -1,0 +1,13 @@
+# Secrets: never commit these. Only .env.example (placeholders) is committed.
+.env
+.env.*
+!.env.example
+.dev.vars
+
+# Installed packages and tool folders
+node_modules/
+.vercel/
+.wrangler/
+
+# System files
+.DS_Store
