@@ -1,4 +1,4 @@
-# Runs the automated tests on GitHub every time you push, and on pull requests.
+# Runs the automated tests and the secret scan on GitHub every time you push, and on pull requests.
 # See the results in your repository's "Actions" tab. A red ✗ means a test failed.
 name: Tests
 
@@ -14,7 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # the whole history, so the secret scan can check old commits too
       - uses: actions/setup-node@v7
         with:
           node-version: 22
       - run: npm test
+      - name: Secret scan (files and every commit)
+        run: npm run check:secrets

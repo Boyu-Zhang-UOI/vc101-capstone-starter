@@ -1,11 +1,13 @@
-# SPEC — <Project name>
+# SPEC — [Project name]
 
 > **Capstone.** Start from your capstone pitch. Keep this file up to date: your AI agent reads it before every task (see `AGENTS.md`).
 
-> **One page.** Write this yourself. You may ask an AI to *critique* it ("What is ambiguous? What edge cases am I missing?"), but not to write it. 🟡
+> **One page.** 🟡 **AI limited:** write this yourself. You may ask an AI to *critique* it ("What is ambiguous? What edge cases am I missing?"), but not to write it.
 > A good spec lets a classmate, or an AI agent, build the right thing without asking you questions.
+> **Goldfish test** (weeks 3 and 6): paste only this file into a fresh chat and ask what it would build and what it would need to ask you. Wherever it guesses wrong or has to ask, revise the spec.
+> Replace every [square-bracket placeholder].
 
-**Author:** <your name> · **Last updated:** <date>
+**Author:** [your name or GitHub username] · **Last updated:** [date]
 
 ## 1. Problem
 
@@ -47,15 +49,15 @@ Things you are deliberately **not** building this time. (This list stops you, an
 ## 6. Constraints
 
 - **Technology:** plain HTML, CSS and JavaScript (ES modules) in `public/`; server routes in `api/`; no frameworks; no build step; deployed on Vercel
-- **Data:** <e.g. saved in the browser with localStorage / in a Supabase table with row-level security>
-- **Must work on:** <e.g. phone and laptop browsers>
+- **Data:** [for example: saved in the browser with localStorage / in a Supabase table with row-level security]
+- **Must work on:** [for example: phone and laptop browsers]
 - **Never:** real payments, real personal data about other people, secrets in front-end code
 
 ## 7. Wireframe
 
-Sketch the main screen on paper, photograph it and add it to the repo as `docs/wireframe.jpg`, then link it here: `![Wireframe](docs/wireframe.jpg)`. A text sketch is fine too:
+Sketch the main screen on paper, photograph it and add it to the repo (for example `docs/wireframe.jpg`), then link it here. A text sketch is fine too:
 
-```
+```text
 +--------------------------------+
 |  Title                         |
 |  [ input box       ] [ Add ]   |
@@ -66,7 +68,7 @@ Sketch the main screen on paper, photograph it and add it to the repo as `docs/w
 
 ## 8. Capstone requirements
 
-Your capstone must include **at least two** of these (pairs: at least three), and each one you choose needs at least one acceptance criterion above. Tick the ones you plan, and say where each one lives.
+Your capstone must include **at least two** of these (pairs: at least three), and each one you choose needs at least one acceptance criterion above. Tick the ones you plan, and say where each one lives. The starter README's "Feature patterns" section has a tested pattern for each.
 
 - [ ] (a) A server-side API call with a hidden key (for example an AI feature through `api/ask.js`) — where:
 - [ ] (b) A database with access rules (row-level security) and/or sign-in (week 7) — where:

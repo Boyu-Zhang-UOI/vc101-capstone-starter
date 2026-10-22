@@ -15,7 +15,17 @@ export default {
       return json({ error: 'Use POST to send a question to this route.' }, 405, { Allow: 'POST' });
     }
 
-    // 2. Read and check the input BEFORE spending any AI quota on it.
+    // 2. Only accept JSON. A web page on ANOTHER site can quietly send a plain form or text
+    //    to your route, but browsers refuse to send JSON to another site unless your server
+    //    agrees (it doesn't). So this one check stops other sites spending your AI quota.
+    //    (Scripts outside a browser can still call the route: that's why the input limits
+    //    below, and a spending limit on your provider account, still matter.)
+    const type = request.headers.get('content-type') || '';
+    if (!/^application\/json\s*(;|$)/i.test(type.trim())) {
+      return json({ error: 'Send the question as JSON, with the header Content-Type: application/json.' }, 415);
+    }
+
+    // 3. Read and check the input BEFORE spending any AI quota on it.
     let body;
     try {
       body = await request.json();
@@ -27,7 +37,7 @@ export default {
       return json({ error: check.error }, 400);
     }
 
-    // 3. Ask the model and send back only its reply.
+    // 4. Ask the model and send back only its reply.
     try {
       const reply = await askLLM(buildMessages(check.question));
       return json({ reply });

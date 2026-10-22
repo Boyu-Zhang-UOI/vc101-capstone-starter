@@ -8,6 +8,11 @@
 //
 // Start it with:  npm run dev      Stop it with:  Ctrl+C
 // After you change .env or any server code (api/ or lib/), stop it and start it again.
+//
+// It listens only on this computer (127.0.0.1), so other devices on your Wi-Fi can't reach
+// it. A Codespace still forwards the port to your browser. To test from your phone on the
+// same network, run:  HOST=0.0.0.0 npm run dev   (and stop it when you're done).
+// To use another port:  PORT=3001 npm run dev
 
 import http from 'node:http';
 import { existsSync } from 'node:fs';
@@ -19,6 +24,7 @@ const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = path.join(ROOT, 'public');
 const API_DIR = path.join(ROOT, 'api');
 const PORT = Number(process.env.PORT) || 3000;
+const HOST = process.env.HOST || '127.0.0.1';
 const MAX_BODY_BYTES = 1_000_000; // refuse request bodies bigger than about 1 MB
 
 // 1. Load .env. Variables that are already set (for example Codespaces secrets) win.
@@ -156,9 +162,12 @@ server.on('error', (err) => {
   throw err;
 });
 
-server.listen(PORT, () => {
+server.listen(PORT, HOST, () => {
   console.log('');
   console.log(`Dev server running at http://localhost:${PORT}`);
+  if (HOST !== '127.0.0.1' && HOST !== 'localhost' && HOST !== '::1') {
+    console.log(`Listening on ${HOST}: other devices on your network can reach this server. Stop it when you're done.`);
+  }
   console.log(`In a Codespace, port ${PORT} is forwarded for you: click "Open in Browser" in the pop-up,`);
   console.log('or open the PORTS tab and click the globe icon. Keep the port Private.');
   describeSettings();

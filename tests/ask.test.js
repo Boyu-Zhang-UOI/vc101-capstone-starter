@@ -50,6 +50,32 @@ test('GET is not allowed (405)', async () => {
   assert.equal(response.headers.get('Allow'), 'POST');
 });
 
+test('a body that is not sent as JSON gets a 415 and never reaches the AI', async (t) => {
+  const fetchMock = stubFetch(t, 200, {});
+  for (const type of ['text/plain', 'application/x-www-form-urlencoded', '']) {
+    const request = new Request('http://localhost/api/ask', {
+      method: 'POST',
+      headers: type ? { 'Content-Type': type } : {},
+      body: JSON.stringify({ question: 'What is an API?' }),
+    });
+    if (!type) request.headers.delete('content-type'); // a string body would otherwise get text/plain
+    const response = await route.fetch(request);
+    assert.equal(response.status, 415, `Content-Type "${type}"`);
+    assert.match((await response.json()).error, /application\/json/);
+  }
+  assert.equal(fetchMock.mock.callCount(), 0);
+});
+
+test('Content-Type with a charset is fine', async (t) => {
+  stubFetch(t, 200, { choices: [{ message: { content: 'Yes.' } }] });
+  const response = await route.fetch(new Request('http://localhost/api/ask', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json; charset=utf-8' },
+    body: JSON.stringify({ question: 'Does a charset work?' }),
+  }));
+  assert.equal(response.status, 200);
+});
+
 test('broken JSON gets a 400', async () => {
   const response = await route.fetch(post('{not json'));
   assert.equal(response.status, 400);

@@ -11,7 +11,7 @@
     "dev": "node dev-server.mjs",
     "test": "node --test",
     "models": "node scripts/list-models.mjs",
-    "check:secrets": "npx --yes @secretlint/quick-start \"**/*\""
+    "check:secrets": "node scripts/check-secrets.mjs"
   },
   "license": "MIT"
 }

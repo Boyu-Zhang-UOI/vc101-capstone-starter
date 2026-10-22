@@ -10,6 +10,9 @@
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
+// The course's tool handout: current providers, base URLs and suggested models.
+const TOOLS_URL = 'https://github.com/Boyu-Zhang-UOI/Vibe_Coding_101/blob/main/TOOLS.md';
+
 const envFile = fileURLToPath(new URL('../.env', import.meta.url));
 if (existsSync(envFile)) process.loadEnvFile(envFile);
 
@@ -34,7 +37,7 @@ let host = baseUrl;
 try {
   host = new URL(baseUrl).host;
 } catch {
-  fail(`LLM_BASE_URL is not a valid web address: "${baseUrl}". Copy it exactly from .env.example or TOOLS.md.`);
+  fail(`LLM_BASE_URL is not a valid web address: "${baseUrl}". Copy it exactly from .env.example or the course tool handout:\n${TOOLS_URL}`);
 }
 
 let response;
@@ -53,10 +56,10 @@ if (!response.ok) {
     fail(`${host} rejected your API key (status ${response.status}).\nCheck that LLM_API_KEY in .env is complete and belongs to this provider. If in doubt, make a new key.`);
   }
   if (response.status === 404) {
-    fail(`${host} has no model list at ${baseUrl}/models (status 404).\nCheck LLM_BASE_URL against .env.example or TOOLS.md.`);
+    fail(`${host} has no model list at ${baseUrl}/models (status 404).\nCheck LLM_BASE_URL against .env.example or the course tool handout:\n${TOOLS_URL}`);
   }
   if (response.status === 429) {
-    fail(`${host} says you've hit a rate limit (status 429). Wait a minute and try again, or switch provider (see TOOLS.md).`);
+    fail(`${host} says you've hit a rate limit (status 429). Wait a minute and try again, or switch provider:\n${TOOLS_URL}`);
   }
   fail(`${host} answered with status ${response.status}.\n${detail}`);
 }
@@ -76,7 +79,8 @@ if (ids.length === 0) {
 console.log(`Models available from ${host}${filter ? ` containing "${filter}"` : ''}:\n`);
 for (const id of ids) console.log(`  ${id}`);
 console.log(`\n${ids.length} model(s). Copy one ID exactly into LLM_MODEL= in .env, then restart npm run dev.`);
-console.log('Not sure which? Pick a small, fast one ("lite", "flash", "mini", "8b" or "20b" in the name). TOOLS.md lists the course\'s current suggestion.');
+console.log('Not sure which? Pick a small, fast one ("lite", "flash", "mini", "8b" or "20b" in the name).');
+console.log(`The course tool handout lists the current suggestion: ${TOOLS_URL}`);
 
 function fail(message) {
   console.error(`\n${message}\n`);

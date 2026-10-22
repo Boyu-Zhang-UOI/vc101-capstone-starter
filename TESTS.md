@@ -2,6 +2,7 @@
 
 > Manual tests are steps a person follows. Automated tests are code that checks code (`npm test`).
 > Every acceptance criterion in `SPEC.md` should have at least one test here. Include edge cases.
+> **Check first:** write each test before you ask for the code it checks, in a separate step. If an AI writes the test, ask for the test alone, in its own prompt, so it isn't shaped by the code it is meant to check.
 
 ## Manual tests
 
@@ -38,10 +39,14 @@ npm test
 | `tests/input.test.js` | Input rules for the AI question: empty, at the limit, over the limit |
 | `tests/validate.test.js` | The server rejects bad request bodies before calling the AI |
 | `tests/llm.test.js` | The AI call with a fake provider: success, missing key, wrong key, rate limit, unknown model; the key never appears in messages |
-| `tests/ask.test.js` | The whole `/api/ask` route: 405 for GET, 400 for bad input, friendly 429 and 500 errors |
-| `tests/<your-feature>.test.js` | |
+| `tests/ask.test.js` | The whole `/api/ask` route: 405 for GET, 415 for a body that isn't JSON, 400 for bad input, friendly 429 and 500 errors |
+| `tests/chart.test.js` | Chart data preparation: counting, sorting, skipping bad values, "Other", text description |
+| `tests/db.test.js` | The Supabase settings check: refuses secret keys, explains missing settings |
+| `tests/weather.test.js` | The public-API route with a fake weather service: good input, bad input, errors, timeouts |
+| `tests/check-secrets.test.js` | The secret scan (`npm run check:secrets`) finds keys in files and in old commits |
+| `tests/[your-feature].test.js` | |
 
-> The capstone needs **at least 3 automated tests of your own features** (not only the starter's examples) and **at least 3 manual edge-case tests** above. GitHub runs `npm test` after every push: see the **Actions** tab.
+> The capstone needs **at least 3 automated tests of your own features** (not only the starter's examples) and **at least 3 manual edge-case tests** above. GitHub runs `npm test` after every push: see the **Actions** tab. Delete the tests of any example pattern you remove.
 
 ## Bugs found by testing
 

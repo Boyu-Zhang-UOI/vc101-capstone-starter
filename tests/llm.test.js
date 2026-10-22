@@ -75,7 +75,7 @@ test('a rate limit (429) becomes a friendly "quota used up" message', async () =
   await assert.rejects(askLLM(MESSAGES, { env: ENV, fetchFn }), (err) => {
     assert.equal(err.status, 429);
     assert.match(err.userMessage, /quota is used up/);
-    assert.match(err.userMessage, /TOOLS\.md/);
+    assert.match(err.userMessage, /switch to another provider/);
     return true;
   });
 });

@@ -135,3 +135,33 @@ li {
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+
+/* Charts drawn by public/lib/chart.js */
+.chart {
+  margin: 1rem 0;
+}
+
+.chart figcaption {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.chart-svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.chart-bar {
+  fill: #2a78d6;
+}
+
+.chart-label,
+.chart-value {
+  font-size: 14px;
+  fill: var(--ink);
+}
+
+.chart-value {
+  fill: var(--muted);
+}
