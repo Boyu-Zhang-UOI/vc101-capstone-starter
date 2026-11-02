@@ -69,13 +69,13 @@ Open the forwarded port 3000 (in a Codespace) or <http://localhost:3000>. Run th
 
 ## How I built it
 
-Built [during Vibe Coding 101, if you choose to say so] using [tools]. See [PROMPTS.md](PROMPTS.md) for how I used AI, [TESTS.md](TESTS.md) for how I checked it, and [SECURITY_CHECKLIST.md](SECURITY_CHECKLIST.md) for the security review.
+Built [during Building Software with AI, if you choose to say so] using [tools]. See [PROMPTS.md](PROMPTS.md) for how I used AI, [TESTS.md](TESTS.md) for how I checked it, and [SECURITY_CHECKLIST.md](SECURITY_CHECKLIST.md) for the security review.
 
 ## Credits
 
 <!-- Code, images, fonts, APIs or tutorials you used, with links and licenses. -->
 
-- Started from the [Vibe Coding 101 capstone starter](https://github.com/Boyu-Zhang-UOI/Vibe_Coding_101/tree/main/projects/capstone-starter) (MIT License).
+- Started from the [Building Software with AI capstone starter](https://github.com/Boyu-Zhang-UOI/Vibe_Coding_101/tree/main/projects/capstone-starter) (MIT License).
 - [If you use the weather example: "Weather data by [Open-Meteo.com](https://open-meteo.com/) (CC BY 4.0)".]
 
 ---
