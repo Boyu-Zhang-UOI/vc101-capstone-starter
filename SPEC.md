@@ -4,7 +4,7 @@
 
 > **One page.** 🟡 **AI limited:** write this yourself. You may ask an AI to *critique* it ("What is ambiguous? What edge cases am I missing?"), but not to write it.
 > A good spec lets a classmate, or an AI agent, build the right thing without asking you questions.
-> **Goldfish test** (weeks 3 and 6): paste only this file into a fresh chat and ask what it would build and what it would need to ask you. Wherever it guesses wrong or has to ask, revise the spec.
+> **Goldfish test** (weeks 5 and 12): paste only this file into a fresh chat and ask what it would build and what it would need to ask you. Wherever it guesses wrong or has to ask, revise the spec.
 > Replace every [square-bracket placeholder].
 
 **Author:** [your name or GitHub username] · **Last updated:** [date]
@@ -71,7 +71,7 @@ Sketch the main screen on paper, photograph it and add it to the repo (for examp
 Your capstone must include **at least two** of these (pairs: at least three), and each one you choose needs at least one acceptance criterion above. Tick the ones you plan, and say where each one lives. The starter README's "Feature patterns" section has a tested pattern for each.
 
 - [ ] (a) A server-side API call with a hidden key (for example an AI feature through `api/ask.js`) — where:
-- [ ] (b) A database with access rules (row-level security) and/or sign-in (week 7) — where:
+- [ ] (b) A database with access rules (row-level security) and/or sign-in (week 13) — where:
 - [ ] (c) A data visualization (a chart, map or timeline) — where:
 - [ ] (d) Data from an external public API — which API:
 

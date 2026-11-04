@@ -11,7 +11,7 @@ import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 // The course's tool handout: current providers, base URLs and suggested models.
-const TOOLS_URL = 'https://github.com/Boyu-Zhang-UOI/Vibe_Coding_101/blob/main/TOOLS.md';
+const TOOLS_URL = 'https://boyu-zhang-uoi.github.io/building-apps-with-ai/TOOLS.html';
 
 const envFile = fileURLToPath(new URL('../.env', import.meta.url));
 if (existsSync(envFile)) process.loadEnvFile(envFile);

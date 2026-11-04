@@ -35,14 +35,14 @@
 
 ## Goldfish test
 
-<!-- Week 6: paste only SPEC.md into a fresh chat. What would it build? What did it have to ask or guess? -->
+<!-- Week 12: paste only SPEC.md into a fresh chat. What would it build? What did it have to ask or guess? -->
 
 - **Questions it asked or wrong guesses it made:** [at least two]
 - **What I changed in SPEC.md because of them:** [the revision]
 
 ## AGENTS.md trial
 
-<!-- Week 6 homework, 🔴 AI off for these notes. -->
+<!-- Week 12 homework, 🔴 AI off for these notes. -->
 
 | Task | Lines of AGENTS.md that applied | Followed? (yes / partly / no) | Evidence |
 |---|---|---|---|
@@ -62,7 +62,7 @@
 
 ## The `Assisted-by:` line
 
-When AI helped with a commit, end the commit message with a blank line and an `Assisted-by:` line naming the tool (required from week 6):
+When AI helped with a commit, end the commit message with a blank line and an `Assisted-by:` line naming the tool (taught in week 3, required from week 11):
 
 ```text
 Add weekly summary chart

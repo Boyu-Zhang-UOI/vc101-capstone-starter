@@ -2,7 +2,7 @@
   "name": "capstone",
   "version": "0.1.0",
   "private": true,
-  "description": "My Building Software with AI capstone. Replace this with one sentence about your app.",
+  "description": "My Building Apps with AI capstone. Replace this with one sentence about your app.",
   "type": "module",
   "engines": {
     "node": ">=20.12"

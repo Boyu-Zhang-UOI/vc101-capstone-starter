@@ -1,6 +1,6 @@
 # SECURITY_CHECKLIST.md
 
-> Complete this before you ship (week 7) and again before the Project Fair (week 8).
+> Start section 3 when you connect your database (week 13). Complete the rest in the week 14 security sweep, including the threat model at the end, and check it all again in week 15's final security pass, before the Project Fair.
 > For each item, tick it **and** write one line of evidence: a command's output, a file name, a screenshot link (check first that the screenshot shows no keys).
 > AI models write insecure code about 45% of the time in independent tests, and newer models have not improved. Passing tests is not a security check: checking is your job.
 > Replace every [square-bracket placeholder].
@@ -81,3 +81,11 @@
 | Issue | How I found it | Fix (commit) |
 |---|---|---|
 | | | |
+
+## Threat model
+
+<!-- One paragraph, written by you (🟡 AI limited: afterwards the AI may point out misuses you missed). Pick the feature most worth attacking: usually the one that saves data or calls a paid API. -->
+
+**Feature:** [the feature]
+
+[One paragraph. **Who** could misuse it (a curious visitor, a script using your publishable key, a classmate, a bot)? **How** (flood it, post a huge or harmful entry, read or change someone else's rows, run up your AI bill, inject a script)? **What stops them?** Point to the exact line, policy or setting. Then say what *doesn't* stop them yet: each of those is either fixed (listed in "What I found and fixed") or in your README's Known issues.]

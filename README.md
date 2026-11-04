@@ -69,24 +69,24 @@ Open the forwarded port 3000 (in a Codespace) or <http://localhost:3000>. Run th
 
 ## How I built it
 
-Built [during Building Software with AI, if you choose to say so] using [tools]. See [PROMPTS.md](PROMPTS.md) for how I used AI, [TESTS.md](TESTS.md) for how I checked it, and [SECURITY_CHECKLIST.md](SECURITY_CHECKLIST.md) for the security review.
+Built [during Building Apps with AI, if you choose to say so] using [tools]. See [PROMPTS.md](PROMPTS.md) for how I used AI, [TESTS.md](TESTS.md) for how I checked it, and [SECURITY_CHECKLIST.md](SECURITY_CHECKLIST.md) for the security review.
 
 ## Credits
 
 <!-- Code, images, fonts, APIs or tutorials you used, with links and licenses. -->
 
-- Started from the [Building Software with AI capstone starter](https://github.com/Boyu-Zhang-UOI/Vibe_Coding_101/tree/main/projects/capstone-starter) (MIT License).
+- Started from the [Building Apps with AI capstone starter](https://github.com/Boyu-Zhang-UOI/vc101-capstone-starter) (MIT License).
 - [If you use the weather example: "Weather data by [Open-Meteo.com](https://open-meteo.com/) (CC BY 4.0)".]
 
 ---
 
 ## Getting started (delete this section when your README is done)
 
-This starter is a small, working app shell: a page with two example features, a server route, tests, deployment settings, and tested patterns for the four capstone feature types. You grow it into your capstone ([project brief](https://github.com/Boyu-Zhang-UOI/Vibe_Coding_101/blob/main/projects/capstone.md)).
+This starter is a small, working app shell: a page with two example features, a server route, tests, deployment settings, and tested patterns for the four capstone feature types. You grow it into your capstone ([project brief](https://boyu-zhang-uoi.github.io/building-apps-with-ai/projects/capstone.html)).
 
-### 1. Set up (before week 6 Studio A)
+### 1. Set up (before week 11 Studio A)
 
-1. Create your repository from this starter: [Start a project from a starter](https://github.com/Boyu-Zhang-UOI/Vibe_Coding_101/blob/main/setup/codespaces.md#start-a-project-from-a-starter), path `projects/capstone-starter`. Keep it in your **personal** GitHub account: Vercel's free plan can't deploy a private repository owned by an organization.
+1. Create your repository from this starter: [Start a project from a starter](https://boyu-zhang-uoi.github.io/building-apps-with-ai/setup/codespaces.html#start-a-project-from-a-starter), template `vc101-capstone-starter`. Keep it in your **personal** GitHub account: Vercel's free plan can't deploy a private repository owned by an organization.
 2. Open it in a Codespace and check it runs. A Codespace already has Node.js; the course uses Node.js 22 LTS (minimum 20.12).
 
    ```bash
@@ -94,7 +94,7 @@ This starter is a small, working app shell: a page with two example features, a 
    npm run dev
    ```
 
-   The list works straight away. The "ask the AI" example needs a key: `cp .env.example .env`, add your key and a model ID (`npm run models`), then restart `npm run dev`. It's the same setup as week 5.
+   The list works straight away. The "ask the AI" example needs a key: `cp .env.example .env`, add your key and a model ID (`npm run models`), then restart `npm run dev`. It's the same setup as the week 9 micro-app.
 3. Fill in `SPEC.md` from your capstone pitch, and the **Project** and **Scope** sections of `AGENTS.md`.
 4. Commit: `Start capstone from starter; add SPEC and AGENTS`.
 
@@ -145,11 +145,11 @@ After changing environment variables on Vercel, **redeploy** (Deployments → �
 
 ## Feature patterns
 
-Your capstone needs at least two of the four feature types ([capstone brief](https://github.com/Boyu-Zhang-UOI/Vibe_Coding_101/blob/main/projects/capstone.md#feature-types-include-at-least-two)). Each one has a small, tested pattern here that you can read, copy and adapt. Delete this section with "Getting started" when you no longer need it; the original stays in the course repository.
+Your capstone needs at least two of the four feature types ([capstone brief](https://boyu-zhang-uoi.github.io/building-apps-with-ai/projects/capstone.html#feature-types-include-at-least-two)). Each one has a small, tested pattern here that you can read, copy and adapt. Delete this section with "Getting started" when you no longer need it; the original stays in the course repository.
 
 | Feature type | Pattern | Files |
 |---|---|---|
-| (a) A server-side API call with a hidden key | The AI route from week 5 | `api/ask.js`, `lib/llm.js`, `lib/prompt.js`, `lib/validate.js` |
+| (a) A server-side API call with a hidden key | The AI route from the micro-app (weeks 9–10) | `api/ask.js`, `lib/llm.js`, `lib/prompt.js`, `lib/validate.js` |
 | (b) A database with access rules | [Supabase with row-level security](#database-supabase-with-row-level-security) | `public/config.example.js`, `public/lib/db.js`, `supabase/policies.sql` |
 | (c) A data visualization | [A chart with no libraries](#a-chart-with-no-libraries) | `public/lib/chart.js` |
 | (d) Data from an external public API | [Data from a public API](#data-from-a-public-api) | `api/weather.js`, `lib/weather.js` |
@@ -189,7 +189,7 @@ Your capstone needs at least two of the four feature types ([capstone brief](htt
    ```
 
    Wrap calls in `try { … } catch (err) { … }` and show a friendly message, with a loading state while you wait.
-5. **Attack your own table** with the course's [RLS attack page](https://boyu-zhang-uoi.github.io/Vibe_Coding_101/tools/rls-attack.html): connect with your Project URL and publishable key, type your table name, and try to read, add, change and delete rows. Everything your "who may do what" table says "no" to must fail. Record the result in `SECURITY_CHECKLIST.md`.
+5. **Attack your own table** with the course's [RLS attack page](https://boyu-zhang-uoi.github.io/building-apps-with-ai/tools/rls-attack.html): connect with your Project URL and publishable key, type your table name, and try to read, add, change and delete rows. Everything your "who may do what" table says "no" to must fail. Record the result in `SECURITY_CHECKLIST.md`.
 6. **Commit** `public/config.js` and `supabase/policies.sql`. Re-run the whole SQL file whenever you change it.
 
 **Private rows need sign-in.** The private-rows pattern uses `(select auth.uid()) = user_id`, so each person must sign in first (Supabase Auth: for example an email "magic link", or an anonymous sign-in that you switch on in the dashboard). See Supabase's [Auth](https://supabase.com/docs/guides/auth) and [Row Level Security](https://supabase.com/docs/guides/database/postgres/row-level-security) guides. A visitor who isn't signed in gets nothing from that table.
